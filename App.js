@@ -1,20 +1,44 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import * as React from 'react';
+import { View, Text } from 'react-native';
 
-export default function App() {
+import Screen from './app/components/Screen';
+
+import {MaterialCommunityIcons} from '@expo/vector-icons'
+
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
+import AppButton from './app/components/Button';
+import colors from './app/config/colors';
+
+const Tweets=({navigation})=>(
+  <Screen>
+    <Text>Tweets</Text>
+    <AppButton title='Details' onPress={()=>navigation.navigate('TweetsDetails')} />
+  </Screen>
+)
+const TweetDetails=()=>(
+  <Screen>
+    <Text>TweetDetails</Text>
+  </Screen>
+)
+
+const Tab=createBottomTabNavigator();
+
+function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Tab.Navigator screenOptions={{
+        tabBarActiveBackgroundColor:'tomato',
+        tabBarActiveTintColor:'white',
+        
+      }}>
+        <Tab.Screen name='Tweets' component={Tweets} options={{tabBarIcon:({color,size})=><MaterialCommunityIcons name='home' size={size} color={color} />}} />
+        <Tab.Screen name='TweetDetails' component={TweetDetails} />
+      </Tab.Navigator>
+    </NavigationContainer>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+export default App;
