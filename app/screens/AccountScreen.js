@@ -20,22 +20,24 @@ const menuItems = [
       name: "email",
       backgroundColor: colors.secondary,
     },
+    targetScreen:'Messages'
   },
 ];
 
-function AccountScreen(props) {
+function AccountScreen({navigation}) {
   return (
     <Screen style={styles.screen}>
       <View style={styles.container}>
         <ListItem
-          title="Mosh Hamedani"
-          subTitle="programmingwithmosh@gmail.com"
+          title="Rana Dawar Abdullah"
+          subTitle="ranadawarabdullah@gmail.com"
           image={require("../assets/mosh.jpg")}
         />
       </View>
-      <View style={styles.container}>
+      <View 
+        style={styles.container}>
         <FlatList
-          data={menuItems}
+          data={menuItems} 
           keyExtractor={(menuItem) => menuItem.title}
           ItemSeparatorComponent={ListItemSeparator}
           renderItem={({ item }) => (
@@ -47,6 +49,7 @@ function AccountScreen(props) {
                   backgroundColor={item.icon.backgroundColor}
                 />
               }
+              onPress={()=>navigation.navigate(item.targetScreen)}
             />
           )}
         />

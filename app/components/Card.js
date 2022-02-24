@@ -1,12 +1,13 @@
 import React from "react";
-import { View, StyleSheet, Image } from "react-native";
+import { View, StyleSheet, Image, TouchableOpacity } from "react-native";
 
 import Text from "./Text";
 import colors from "../config/colors";
 
-function Card({ title, subTitle, image }) {
+function Card({ title, subTitle, image, onPress }) {
   return (
-    <View style={styles.card}>
+    <TouchableOpacity onPress={onPress}>
+      <View style={styles.card}>
       <Image style={styles.image} source={image} />
       <View style={styles.detailsContainer}>
         <Text style={styles.title} numberOfLines={1}>
@@ -17,6 +18,7 @@ function Card({ title, subTitle, image }) {
         </Text>
       </View>
     </View>
+    </TouchableOpacity>
   );
 }
 
@@ -26,6 +28,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.white,
     marginBottom: 20,
     overflow: "hidden",
+    elevation: 5,
+    shadowColor: colors.primary,
+    
   },
   detailsContainer: {
     padding: 20,
@@ -41,6 +46,7 @@ const styles = StyleSheet.create({
   title: {
     marginBottom: 7,
   },
+  
 });
 
 export default Card;

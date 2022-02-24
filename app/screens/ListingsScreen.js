@@ -1,5 +1,5 @@
 import React from "react";
-import { FlatList, StyleSheet } from "react-native";
+import { FlatList, ScrollView, StyleSheet } from "react-native";
 
 import Card from "../components/Card";
 import colors from "../config/colors";
@@ -20,10 +20,11 @@ const listings = [
   },
 ];
 
-function ListingsScreen(props) {
+function ListingsScreen({navigation}) {
   return (
     <Screen style={styles.screen}>
       <FlatList
+        showsVerticalScrollIndicator={false}
         data={listings}
         keyExtractor={(listing) => listing.id.toString()}
         renderItem={({ item }) => (
@@ -31,6 +32,7 @@ function ListingsScreen(props) {
             title={item.title}
             subTitle={"$" + item.price}
             image={item.image}
+            onPress={()=>navigation.navigate('Details',item)}
           />
         )}
       />
@@ -40,7 +42,7 @@ function ListingsScreen(props) {
 
 const styles = StyleSheet.create({
   screen: {
-    padding: 20,
+    padding: 10,
     backgroundColor: colors.light,
   },
 });
