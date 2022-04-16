@@ -4,6 +4,7 @@ import { StyleSheet, View, FlatList } from "react-native";
 import { ListItem, ListItemSeparator } from "../components/lists";
 import colors from "../config/colors";
 import Icon from "../components/Icon";
+import routes from "../navigation/routes";
 import Screen from "../components/Screen";
 
 const menuItems = [
@@ -20,24 +21,23 @@ const menuItems = [
       name: "email",
       backgroundColor: colors.secondary,
     },
-    targetScreen:'Messages'
+    targetScreen: routes.MESSAGES,
   },
 ];
 
-function AccountScreen({navigation}) {
+function AccountScreen({ navigation }) {
   return (
     <Screen style={styles.screen}>
       <View style={styles.container}>
         <ListItem
-          title="Rana Dawar Abdullah"
-          subTitle="ranadawarabdullah@gmail.com"
+          title="Mosh Hamedani"
+          subTitle="programmingwithmosh@gmail.com"
           image={require("../assets/mosh.jpg")}
         />
       </View>
-      <View 
-        style={styles.container}>
+      <View style={styles.container}>
         <FlatList
-          data={menuItems} 
+          data={menuItems}
           keyExtractor={(menuItem) => menuItem.title}
           ItemSeparatorComponent={ListItemSeparator}
           renderItem={({ item }) => (
@@ -49,7 +49,7 @@ function AccountScreen({navigation}) {
                   backgroundColor={item.icon.backgroundColor}
                 />
               }
-              onPress={()=>navigation.navigate(item.targetScreen)}
+              onPress={() => navigation.navigate(item.targetScreen)}
             />
           )}
         />

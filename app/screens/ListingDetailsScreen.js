@@ -5,8 +5,9 @@ import colors from "../config/colors";
 import ListItem from "../components/lists/ListItem";
 import Text from "../components/Text";
 
-function ListingDetailsScreen({route}) {
-  const listing=route.params;
+function ListingDetailsScreen({ route }) {
+  const listing = route.params;
+
   return (
     <View>
       <Image style={styles.image} source={listing.image} />

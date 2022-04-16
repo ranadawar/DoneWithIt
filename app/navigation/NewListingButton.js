@@ -1,31 +1,35 @@
-import { StyleSheet, Text, TouchableOpacity, View } from 'react-native'
-import React from 'react';
+import React from "react";
+import { View, StyleSheet, TouchableOpacity } from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
-import {MaterialCommunityIcons} from "@expo/vector-icons";
-import colors from '../config/colors';
+import colors from "../config/colors";
 
-const NewListingButton = ({onPress}) => {
+function NewListingButton({ onPress }) {
   return (
     <TouchableOpacity onPress={onPress}>
-        <View style={styles.container}>
-      <MaterialCommunityIcons name='plus-circle' size={45} color={colors.white} />
-    </View>
+      <View style={styles.container}>
+        <MaterialCommunityIcons
+          name="plus-circle"
+          color={colors.white}
+          size={40}
+        />
+      </View>
     </TouchableOpacity>
-  )
+  );
 }
 
-export default NewListingButton
-
 const styles = StyleSheet.create({
-    container:{
-        backgroundColor:colors.primary,
-        height:70,
-        width:70,
-        borderRadius:35,
-        justifyContent:'center',
-        alignItems:'center',
-        bottom:35,
-        borderWidth:5,
-        borderColor:'white'
-    }
-})
+  container: {
+    alignItems: "center",
+    backgroundColor: colors.primary,
+    borderColor: colors.white,
+    borderRadius: 40,
+    borderWidth: 10,
+    bottom: 20,
+    height: 80,
+    justifyContent: "center",
+    width: 80,
+  },
+});
+
+export default NewListingButton;
